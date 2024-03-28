@@ -11,17 +11,25 @@ import { NextFunction, Request, Response } from 'express';
 export const getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const page: number = Number(req?.query?.page) || 0;
   const limit: number = Number(req?.query?.limit) || 10;
+  const mucle: string | undefined = req?.query?.mucle as string | undefined;
+  const type: string | undefined = req?.query?.type as string | undefined;
+  const level: string | undefined = req?.query?.level as string | undefined;
+  const name: string | undefined = req?.query?.name as string | undefined;
 
   try {
-    const users: Array<ExerciceRo> = await service.getAll({
+    const data: Array<ExerciceRo> = await service.getAll({
         page,
         limit,
+        mucle,
+        type,
+        level,
+        name,
     });
-    const count: number = users.length;
+    const count: number = data.length;
     const response: ResponseRo = {
         status_code: StatusCodes.OK,
         message: 'Success',
-        data: users,
+        data: data,
         errors: [],
     };
     res.status(response.status_code).json(response);

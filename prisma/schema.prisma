@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url      = "postgresql://antoinefamibelle:TwfhjWv8IFc0@ep-divine-bush-a2b7sbla.eu-central-1.aws.neon.tech/exercices?sslmode=require"
 }
 
 model Exercice {
