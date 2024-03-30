@@ -1,7 +1,7 @@
 import { StatusCodes } from "http-status-codes";
 import { stripAnsi } from "../../utils/error";
 import { ExerciceRo, ResponseRo } from "../../types";
-import * as service from './exercice.service';
+import * as service from './services';
 
 import { NextFunction, Request, Response } from 'express';
 

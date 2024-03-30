@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { getAll } from './exercice.controller';
+import { getAll } from './controller';
 
 /**
 * @main
