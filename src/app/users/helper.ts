@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import { User } from "@prisma/client"
+import { User } from '@prisma/client';
 import { UserRo, UserAuthRo } from "../../types";
 
 export function ctxUserResponse(user: User): UserRo {

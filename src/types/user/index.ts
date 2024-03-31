@@ -31,3 +31,8 @@ export type UserLoginDto = {
     email: string;
     password: string;
 }
+
+export enum ERole {
+    ADMIN = 'admin',
+    USER = 'user'
+}

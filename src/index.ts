@@ -7,6 +7,7 @@ import { logger, closeGracefullyEverything } from './utils';
 import router from './router';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
+import bodyParser from 'body-parser';
 dotenv.config();
 
 const app: Application = express();
@@ -19,6 +20,8 @@ var corsOptions = {
   origin: '*',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 }
+
+app.use(bodyParser.json());
 
 app.use(cors(corsOptions))
 

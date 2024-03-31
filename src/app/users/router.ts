@@ -11,7 +11,7 @@ const userRouter: Router = express.Router();
 /**
  * @method GET
  */
-userRouter.get('/', getAll);
+// userRouter.get('/', getAll);
 
 /**
  * @method POST
