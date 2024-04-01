@@ -1,5 +1,6 @@
 import express, { Router } from 'express';
-import { getAll } from './controller';
+import { getAll, favorite } from './controller';
+import { auth } from '../../middleware';
 
 /**
 * @main
@@ -11,7 +12,11 @@ const exerciceRouter: Router = express.Router();
 /**
  * @method GET
  */
-exerciceRouter.get('/', getAll);
+exerciceRouter.get('/', auth, getAll);
 
+/**
+ * @method POST
+ */
+exerciceRouter.post('/favorite/:id', auth, favorite);
 
 export default exerciceRouter;
