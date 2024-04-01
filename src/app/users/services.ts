@@ -3,10 +3,10 @@ import { DbError } from '../../utils/error';
 import { prismaClient } from '../../utils';
 import { User } from '@prisma/client';
 import { StatusCodes } from "http-status-codes";
-import { ERole, ExerciceRo, UserAuthRo } from '../../types';
+import { ERole, ExerciceRo, UserAuthRo, UserRo } from '../../types';
 import { UserCreateDto, UserLoginDto } from '../../types';
 import bcrypt from 'bcrypt';
-import { tokenSigning, ctxUserAuthResponse } from './helper';
+import { tokenSigning, ctxUserAuthResponse, ctxUserResponse } from './helper';
 
 const jwtSecret = process.env.JWT_SECRET || 'secret';
 
@@ -102,3 +102,23 @@ export const login = async (dto: UserLoginDto): Promise<Array<UserAuthRo>> => {
     throw new DbError(err.message);
   }
 }
+
+export const getUserBydId = async (id: string): Promise<Array<UserRo>> => {
+  try {
+    const user: User | null = await prismaClient.user.findUnique({
+      where: {
+        id: id
+      }
+    });
+
+    if (!user) {
+      throw new DbError('User not found');
+    }
+
+    const response: Array<UserRo> = [ctxUserResponse(user)];
+    return response;
+  } catch (err: any) {
+    logger.error(err);
+    throw new DbError(err.message);
+  }
+};

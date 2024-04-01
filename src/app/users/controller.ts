@@ -118,3 +118,35 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
     }
   }
 };
+
+export const getCurrentUser = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const user_id = res.locals.user.id;
+    const data: Array<UserRo> = await service.getUserBydId(user_id);
+    const response: ResponseRo = {
+        status_code: StatusCodes.OK,
+        message: 'Success',
+        data: data,
+        errors: [],
+    };
+    res.status(response.status_code).json(response);
+  } catch (err: any) {
+    if (err.name === 'DbError') {
+        const response: ResponseRo = {
+            status_code: StatusCodes.BAD_REQUEST,
+            message: stripAnsi(err.message),
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    } else {
+        const response: ResponseRo = {
+            status_code: StatusCodes.INTERNAL_SERVER_ERROR,
+            message: 'Internal Server Error',
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    }
+  };
+};
