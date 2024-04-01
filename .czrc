@@ -1,0 +1,369 @@
+{
+    "path": "cz-emoji",
+    "config": {
+        "cz-emoji": {
+            "questions": {
+                "type": "Select the type of change you are commiting:",
+                "scope": "Specify a scope:",
+                "subject": "Write Header (First letter in uppercase - no ending point):",
+                "body": "Provide a longer description (First letter in uppercase with ending point):",
+                "breakingBody": "A BREAKING CHANGE commit requires a body. Please enter a longer description of the commit itself:",
+                "issues": "List any issue closed (#1, #2, ...):"
+            },
+            "types": [
+                {
+                    "emoji": "[🎨 FORMAT]",
+                    "code": ":art:",
+                    "description": "Improving structure / format of the code.",
+                    "name": "style"
+                },
+                {
+                    "emoji": "[⚡️ PERF]",
+                    "code": ":zap:",
+                    "description": "Improving performance.",
+                    "name": "perf"
+                },
+                {
+                    "emoji": "[🔥 CLEAN]",
+                    "code": ":fire:",
+                    "description": "Removing code or files.",
+                    "name": "prune"
+                },
+                {
+                    "emoji": "[🐛 FIX]",
+                    "code": ":bug:",
+                    "description": "Fixing a bug.",
+                    "name": "fix"
+                },
+                {
+                    "emoji": "[🚑 HOTFIX]",
+                    "code": ":ambulance:",
+                    "description": "Critical hotfix.",
+                    "name": "quickfix"
+                },
+                {
+                    "emoji": "[✨ FEAT]",
+                    "code": ":sparkles:",
+                    "description": "Introducing new features.",
+                    "name": "feature"
+                },
+                {
+                    "emoji": "[📝 DOCS]",
+                    "code": ":pencil:",
+                    "description": "Writing docs.",
+                    "name": "docs"
+                },
+                {
+                    "emoji": "[🚀 DEPLOY]",
+                    "code": ":rocket:",
+                    "description": "Deploying stuff.",
+                    "name": "deploy"
+                },
+                {
+                    "emoji": "[💄 STYLE]",
+                    "code": ":lipstick:",
+                    "description": "Updating the UI and style files.",
+                    "name": "ui"
+                },
+                {
+                    "emoji": "[🎉 INIT]",
+                    "code": ":tada:",
+                    "description": "Initial commit.",
+                    "name": "init"
+                },
+                {
+                    "emoji": "[✅ TESTING]",
+                    "code": ":white_check_mark:",
+                    "description": "Adding tests.",
+                    "name": "test"
+                },
+                {
+                    "emoji": "[🔒 SECURITY]",
+                    "code": ":lock:",
+                    "description": "Fixing security issues.",
+                    "name": "security"
+                },
+                {
+                    "emoji": "[🔖 RELEASE]",
+                    "code": ":bookmark:",
+                    "description": "Releasing / Version tags.",
+                    "name": "release"
+                },
+                {
+                    "emoji": "[🚨 LINTER]",
+                    "code": ":rotating_light:",
+                    "description": "Removing linter warnings.",
+                    "name": "lint"
+                },
+                {
+                    "emoji": "[🚧 WIP]",
+                    "code": ":construction:",
+                    "description": "Work in progress.",
+                    "name": "wip"
+                },
+                {
+                    "emoji": "[💚 CI FIX]",
+                    "code": ":green_heart:",
+                    "description": "Fixing CI Build.",
+                    "name": "fix-ci"
+                },
+                {
+                    "emoji": "[⬇️ DOWNGRADE]",
+                    "code": ":arrow_down:",
+                    "description": "Downgrading dependencies.",
+                    "name": "downgrade"
+                },
+                {
+                    "emoji": "[⬆️ UPGRADE]",
+                    "code": ":arrow_up:",
+                    "description": "Upgrading dependencies.",
+                    "name": "upgrade"
+                },
+                {
+                    "emoji": "[📌 PINNING]",
+                    "code": ":pushpin:",
+                    "description": "Pinning dependencies to specific versions.",
+                    "name": "pushpin"
+                },
+                {
+                    "emoji": "[👷 CI ADD]",
+                    "code": ":construction_worker:",
+                    "description": "Adding CI build system.",
+                    "name": "ci"
+                },
+                {
+                    "emoji": "[📈 ANALYTICS]",
+                    "code": ":chart_with_upwards_trend:",
+                    "description": "Adding analytics or tracking code.",
+                    "name": "analytics"
+                },
+                {
+                    "emoji": "[♻️ REFACTOR]",
+                    "code": ":recycle:",
+                    "description": "Refactoring code.",
+                    "name": "refactoring"
+                },
+                {
+                    "emoji": "[🐳 DOCKER]",
+                    "code": ":whale:",
+                    "description": "Work about Docker.",
+                    "name": "docker"
+                },
+                {
+                    "emoji": "[➕ DEPENDENCY ADD]",
+                    "code": ":heavy_plus_sign:",
+                    "description": "Adding a dependency.",
+                    "name": "dep-add"
+                },
+                {
+                    "emoji": "[➖ DEPENDENCY RM]",
+                    "code": ":heavy_minus_sign:",
+                    "description": "Removing a dependency.",
+                    "name": "dep-rm"
+                },
+                {
+                    "emoji": "[🔧 CONFIG]",
+                    "code": ":wrench:",
+                    "description": "Changing configuration files.",
+                    "name": "config"
+                },
+                {
+                    "emoji": "[🌐 I18N]",
+                    "code": ":globe_with_meridians:",
+                    "description": "Internationalization and localization.",
+                    "name": "i18n"
+                },
+                {
+                    "emoji": "[✏️ TYPOS]",
+                    "code": ":pencil2:",
+                    "description": "Fixing typos.",
+                    "name": "typo"
+                },
+                {
+                    "emoji": "[💩 NEED REWORK]",
+                    "code": ":poop:",
+                    "description": "Writing bad code that needs to be improved.",
+                    "name": "poo"
+                },
+                {
+                    "emoji": "[⏪ REVERT]",
+                    "code": ":rewind:",
+                    "description": "Reverting changes.",
+                    "name": "revert"
+                },
+                {
+                    "emoji": "[🔀 MERGE]",
+                    "code": ":twisted_rightwards_arrows:",
+                    "description": "Merging branches.",
+                    "name": "merge"
+                },
+                {
+                    "emoji": "[📦 BUILD]",
+                    "code": ":package:",
+                    "description": "Updating compiled files or packages.",
+                    "name": "dep-up"
+                },
+                {
+                    "emoji": "[👽 EXT API]",
+                    "code": ":alien:",
+                    "description": "Updating code due to external API changes.",
+                    "name": "compat"
+                },
+                {
+                    "emoji": "[🚚 STRUCTURE]",
+                    "code": ":truck:",
+                    "description": "Moving or renaming files.",
+                    "name": "mv"
+                },
+                {
+                    "emoji": "[💥 BREAKING]",
+                    "code": ":boom:",
+                    "description": "Introducing breaking changes.",
+                    "name": "breaking"
+                },
+                {
+                    "emoji": "[🍱 RESSOURCES]",
+                    "code": ":bento:",
+                    "description": "Adding or updating assets.",
+                    "name": "assets"
+                },
+                {
+                    "emoji": "[👌 REVIEW]",
+                    "code": ":ok_hand:",
+                    "description": "Updating code due to code review changes.",
+                    "name": "review"
+                },
+                {
+                    "emoji": "[💡 DOC]",
+                    "code": ":bulb:",
+                    "description": "Documenting source code.",
+                    "name": "docs-code"
+                },
+                {
+                    "emoji": "[💬 TEXT]",
+                    "code": ":speech_balloon:",
+                    "description": "Updating text and literals.",
+                    "name": "texts"
+                },
+                {
+                    "emoji": "[🗃 DB]",
+                    "code": ":card_file_box:",
+                    "description": "Performing database related changes.",
+                    "name": "db"
+                },
+                {
+                    "emoji": "[🔊 LOG ADD]",
+                    "code": ":loud_sound:",
+                    "description": "Adding logs.",
+                    "name": "log-add"
+                },
+                {
+                    "emoji": "[🔇 LOG RM]",
+                    "code": ":mute:",
+                    "description": "Removing logs.",
+                    "name": "log-rm"
+                },
+                {
+                    "emoji": "[📱 RESPONSIVE]",
+                    "code": ":iphone:",
+                    "description": "Working on responsive design.",
+                    "name": "iphone"
+                },
+                {
+                    "emoji": "[🤡 MOCK]",
+                    "code": ":clown_face:",
+                    "description": "Mocking things.",
+                    "name": "clown-face"
+                },
+                {
+                    "emoji": "[🙈 IGNORE FILE]",
+                    "code": ":see_no_evil:",
+                    "description": "Adding or updating a .gitignore file.",
+                    "name": "see-no-evil"
+                },
+                {
+                    "emoji": "[🔍 SEO]",
+                    "code": ":mag:",
+                    "description": "Improving SEO.",
+                    "name": "seo"
+                },
+                {
+                    "emoji": "[☸️ K8S]",
+                    "code": ":wheel_of_dharma:",
+                    "description": "Work about Kubernetes.",
+                    "name": "k8s"
+                },
+                {
+                    "emoji": "[🌱 SEED]",
+                    "code": ":seedling:",
+                    "description": "Adding or updating seed files.",
+                    "name": "seed"
+                },
+                {
+                    "emoji": "[💫 UI]",
+                    "code": ":dizzy:",
+                    "description": "Adding or updating animations and transitions.",
+                    "name": "animation"
+                }
+            ],
+            "scopes": [
+                {
+                    "name": "Controller",
+                    "value": "Controller"
+                },
+                {
+                    "name": "View",
+                    "value": "View"
+                },
+                {
+                    "name": "Model",
+                    "value": "Model"
+                },
+                {
+                    "name": "Router",
+                    "value": "Router"
+                },
+                {
+                    "name": "Component",
+                    "value": "Component"
+                },
+                {
+                    "name": "Service",
+                    "value": "Service"
+                },
+                {
+                    "name": "Helper",
+                    "value": "Helper"
+                },
+                {
+                    "name": "Type",
+                    "value": "Type"
+                },
+                {
+                    "name": "Library",
+                    "value": "Library"
+                },
+                {
+                    "name": "Plugin",
+                    "value": "Plugin"
+                },
+                {
+                    "name": "Generator",
+                    "value": "Generator"
+                },
+                {
+                    "name": "Executor",
+                    "value": "Executor"
+                },
+                {
+                    "name": "Workspace",
+                    "value": "Workspace"
+                },
+                {
+                    "name": "Apps",
+                    "value": "Apps"
+                }
+            ]
+        }
+    }
+}
