@@ -19,6 +19,7 @@ model Exercice {
   updatedAt    DateTime
   userId       String?
   User         User?    @relation(fields: [userId], references: [id])
+  workouts     Workout[]
 }
 
 model User {
@@ -31,4 +32,16 @@ model User {
   createdAt DateTime   @default(now())
   updatedAt DateTime    @updatedAt
   favorites Exercice[]
+  workouts  Workout[]
+}
+
+model Workout {
+  id          String   @id
+  name        String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime
+  userId      String?
+  User        User?    @relation(fields: [userId], references: [id])
+  exercices   Exercice[]
 }
