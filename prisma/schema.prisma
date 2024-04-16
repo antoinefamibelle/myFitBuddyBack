@@ -36,12 +36,15 @@ model User {
 }
 
 model Workout {
-  id          String   @id
+  id          String   @id @default(uuid())
   name        String
   description String?
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime
+  createdById  String? // userId
+  duration    Int? // in minutes
+  difficulty  String?
   userId      String?
-  User        User?    @relation(fields: [userId], references: [id])
+  user        User?    @relation(fields: [userId], references: [id])
   exercices   Exercice[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }
