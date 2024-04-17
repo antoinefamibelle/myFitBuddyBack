@@ -8,47 +8,7 @@ import { UserCreateDto, UserLoginDto } from '../../types';
 import bcrypt from 'bcrypt';
 import { tokenSigning, ctxUserAuthResponse, ctxUserResponse } from './helper';
 
-const jwtSecret = process.env.JWT_SECRET || 'secret';
-
-/**
- * Get All Exercices
- * @param {string} id
- *
- * @returns {Promise<Array<ExerciceRo>>}
- *  */
-// export const getAll = async ({
-//     page = 0,
-//     limit = 10,
-//     mucle,
-//     type,
-//     level,
-//     name
-// }: {
-//     page: number;
-//     limit: number;
-//     mucle: string | undefined;
-//     type: string | undefined;
-//     level: string | undefined;
-//     name: string | undefined;
-// }): Promise<Array<ExerciceRo>> => {
-//   try {
-//     const data: Array<Exercice> = await prismaClient.exercice.findMany({
-//         where: {
-//           muscleGroup: mucle ? { equals: mucle } : undefined,
-//           type: type ? { equals: type } : undefined,
-//           name: name ? { contains: name } : undefined,
-//           difficulty: level ? { equals: level } : undefined,
-//         },
-//         skip: page * limit,
-//         take: limit,
-//     });
-//     const response: Array<ExerciceRo> = data.map((val) => responseBuilder(val));
-//     return response;
-//   } catch (err: any) {
-//     logger.error(err);
-//     throw new DbError(err.message);
-//   }
-// };
+const jwtSecret: string = process.env.JWT_SECRET || 'secret';
 
 export const createUser = async (userCreateDto: UserCreateDto): Promise<Array<UserAuthRo>> => {
   const salt = await bcrypt.genSalt(10) // Generate a salt with 10 round ! The more there is round the more it is secured
@@ -61,7 +21,7 @@ export const createUser = async (userCreateDto: UserCreateDto): Promise<Array<Us
         firstName: userCreateDto.firstName,
         lastName: userCreateDto.lastName,
         password: password,
-        role: ERole.USER,
+        role: Role.USER
       }
     });
 

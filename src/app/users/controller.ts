@@ -2,7 +2,7 @@ import { StatusCodes } from "http-status-codes";
 import { stripAnsi } from "../../utils/error";
 import { ExerciceRo, ResponseRo, UserLoginDto } from "../../types";
 import * as service from './services';
-import { UserCreateDto, UserRo } from '../../types';
+import { UserCreateDto, UserRo, UserUpdateDto } from '../../types';
 import { NextFunction, Request, Response } from 'express';
 
 /**
@@ -57,7 +57,6 @@ import { NextFunction, Request, Response } from 'express';
 export const register = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const dto: UserCreateDto = req.body;
   try {
-    console.log('dto', dto)
     const data: Array<UserRo> = await service.createUser(dto);
     const response: ResponseRo = {
         status_code: StatusCodes.OK,

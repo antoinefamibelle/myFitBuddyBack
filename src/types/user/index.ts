@@ -5,6 +5,7 @@ export type UserRo = {
     email: string;
     firstName: string;
     lastName: string;
+    profilPic: string;
     createdAt: Date;
     updatedAt: Date;
 };
@@ -20,19 +21,20 @@ export type UserCreateDto = {
     password: string;
 };
 
-export type UserUpdateDto = {
-    id: string;
-    email: string;
-    firstName: string;
-    lastName: string;
-};
-
 export type UserLoginDto = {
     email: string;
     password: string;
 }
 
-export enum ERole {
-    ADMIN = 'admin',
-    USER = 'user'
+export type UserUpdateDto = {
+    firstName?: string;
+    lastName?: string;
+    profilPic?: string;
+    username?: string;
+};
+
+//create enum of role
+export enum Role {
+    ADMIN = 'ADMIN',
+    USER = 'USER'
 }
