@@ -8,19 +8,18 @@ datasource db {
 }
 
 model Exercice {
-  id           String    @id @default(uuid())
+  id           String   @id @default(uuid())
   type         String?
-  name         String    @unique
+  name         String   @unique
   equipment    String?
   instructions String?
   difficulty   String?
   muscleGroup  String?
-  createdAt    DateTime  @default(now())
+  createdAt    DateTime @default(now())
   updatedAt    DateTime
   userId       String?
-  User         User?     @relation(fields: [userId], references: [id])
-  workouts     Workout[] @relation("ExerciceToWorkout")
-  Workout      Workout?  @relation(fields: [workoutId], references: [id])
+  User         User?    @relation(fields: [userId], references: [id])
+  Workout      Workout? @relation(fields: [workoutId], references: [id])
   workoutId    String?
 }
 
@@ -51,7 +50,4 @@ model Workout {
   exercices   Exercice[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
-  Exercice    Exercice?  @relation(fields: [exerciceId], references: [id])
-  exerciceId  String?
-  Exercice    Exercice?  @relation(fields: [exerciceId], references: [id])
 }

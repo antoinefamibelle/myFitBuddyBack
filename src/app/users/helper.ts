@@ -8,6 +8,7 @@ export function ctxUserResponse(user: User): UserRo {
         email             : user.email,
         firstName         : user.firstName,
         lastName          : user.lastName,
+        profilPic         : user.profilPicture || '',
         createdAt         : user.createdAt,
         updatedAt         : user.updatedAt,
     };
@@ -21,6 +22,7 @@ export function ctxUserAuthResponse(user: User, token: string): UserAuthRo {
     lastName          : user.lastName,
     createdAt         : user.createdAt,
     updatedAt         : user.updatedAt,
+    profilPic         : user.profilPicture || '',
     token             : token,
   };
 }
