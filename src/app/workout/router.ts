@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { getAll, create } from './controller';
+import { getAll, create, getMyWorkouts } from './controller';
 import { auth } from '../../middleware';
 
 /**
@@ -13,6 +13,7 @@ const router: Router = express.Router();
  * @method GET
  */
 router.get('/', auth, getAll);
+router.get('/me', auth, getMyWorkouts);
 
 /**
  * @method POST

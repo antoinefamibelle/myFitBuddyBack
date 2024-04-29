@@ -28,7 +28,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
         name,
     });
     const count: number = data.length;
-    const response: ResponseRo = {
+    const response: ResponseRo<WorkoutRo[]> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -37,7 +37,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -45,7 +45,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
@@ -72,7 +72,7 @@ export const create = async (req: Request, res: Response, next: NextFunction): P
       data: dto,
       user_id: userId,
     })
-    const response: ResponseRo = {
+    const response: ResponseRo<WorkoutRo> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -81,7 +81,7 @@ export const create = async (req: Request, res: Response, next: NextFunction): P
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -89,7 +89,46 @@ export const create = async (req: Request, res: Response, next: NextFunction): P
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
+            status_code: StatusCodes.INTERNAL_SERVER_ERROR,
+            message: 'Internal Server Error',
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    }
+  }
+};
+
+/**
+ * Specific controllers.
+ * @GET /me
+ * @description Get all exercices of the current user
+ * @auth
+ */
+
+export const getMyWorkouts = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const userId: string = res.locals.user.id as string; // Get user id from token
+    const data: Array<WorkoutRo> = await service.getMyWorkouts(userId);
+    const response: ResponseRo<WorkoutRo[]> = {
+        status_code: StatusCodes.OK,
+        message: 'Success',
+        data: data,
+        errors: [],
+    };
+    res.status(response.status_code).json(response);
+  } catch (err: any) {
+    if (err.name === 'DbError') {
+        const response: ResponseRo<[]> = {
+            status_code: StatusCodes.BAD_REQUEST,
+            message: stripAnsi(err.message),
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    } else {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
