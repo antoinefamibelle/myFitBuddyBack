@@ -32,7 +32,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
         name,
     });
     const count: number = data.length;
-    const response: ResponseRo = {
+    const response: ResponseRo<ExerciceRo[]> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -41,7 +41,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -49,7 +49,7 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
@@ -84,7 +84,7 @@ export const favorite = async (req: Request, res: Response, next: NextFunction):
     // Check if user exists
     if (!user) {
       logger.error(`[User] ${user_id} not found`);
-      const response: ResponseRo = {
+      const response: ResponseRo<[]> = {
         status_code: StatusCodes.NOT_FOUND,
         message: 'User not found',
         data: [],
@@ -103,7 +103,7 @@ export const favorite = async (req: Request, res: Response, next: NextFunction):
 
     if (!exercice) {
       logger.error(`[Exercice] ${id} not found`);
-      const response: ResponseRo = {
+      const response: ResponseRo<[]> = {
         status_code: StatusCodes.NOT_FOUND,
         message: 'Exercice not found',
         data: [],
@@ -142,7 +142,7 @@ export const favorite = async (req: Request, res: Response, next: NextFunction):
         }
       });
     }
-    const response: ResponseRo = {
+    const response: ResponseRo<[]> = {
       status_code: StatusCodes.OK,
       message: 'Success',
       data: [],
@@ -151,7 +151,7 @@ export const favorite = async (req: Request, res: Response, next: NextFunction):
     res.status(response.status_code).json(response);
   } catch(err) {
     logger.error(err);
-    const response: ResponseRo = {
+    const response: ResponseRo<[]> = {
       status_code: StatusCodes.INTERNAL_SERVER_ERROR,
       message: 'Internal Server Error',
       data: [],

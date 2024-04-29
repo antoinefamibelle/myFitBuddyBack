@@ -1,6 +1,6 @@
-export interface ResponseRo {
+export interface ResponseRo<T> {
     status_code: number;
     message: string;
-    data: any;
+    data: T;
     errors: string[];
 }

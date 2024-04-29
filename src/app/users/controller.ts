@@ -58,7 +58,7 @@ export const register = async (req: Request, res: Response, next: NextFunction):
   const dto: UserCreateDto = req.body;
   try {
     const data: Array<UserRo> = await service.createUser(dto);
-    const response: ResponseRo = {
+    const response: ResponseRo<UserRo[]> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -67,7 +67,7 @@ export const register = async (req: Request, res: Response, next: NextFunction):
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -75,7 +75,7 @@ export const register = async (req: Request, res: Response, next: NextFunction):
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
@@ -90,7 +90,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
   const dto: UserLoginDto = req.body;
   try {
     const data: Array<UserRo> = await service.login(dto);
-    const response: ResponseRo = {
+    const response: ResponseRo<UserRo[]> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -99,7 +99,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -107,7 +107,7 @@ export const login = async (req: Request, res: Response, next: NextFunction): Pr
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
@@ -122,7 +122,7 @@ export const getCurrentUser = async (req: Request, res: Response, next: NextFunc
   try {
     const user_id = res.locals.user.id;
     const data: Array<UserRo> = await service.getUserBydId(user_id);
-    const response: ResponseRo = {
+    const response: ResponseRo<UserRo[]> = {
         status_code: StatusCodes.OK,
         message: 'Success',
         data: data,
@@ -131,7 +131,7 @@ export const getCurrentUser = async (req: Request, res: Response, next: NextFunc
     res.status(response.status_code).json(response);
   } catch (err: any) {
     if (err.name === 'DbError') {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.BAD_REQUEST,
             message: stripAnsi(err.message),
             data: [],
@@ -139,7 +139,7 @@ export const getCurrentUser = async (req: Request, res: Response, next: NextFunc
         };
         res.status(response.status_code).json(response);
     } else {
-        const response: ResponseRo = {
+        const response: ResponseRo<[]> = {
             status_code: StatusCodes.INTERNAL_SERVER_ERROR,
             message: 'Internal Server Error',
             data: [],
