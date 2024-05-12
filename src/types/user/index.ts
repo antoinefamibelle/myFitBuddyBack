@@ -6,6 +6,8 @@ export type UserRo = {
     firstName: string;
     lastName: string;
     profilPic: string;
+    userHeigth: number;
+    userWeight: number;
     createdAt: Date;
     updatedAt: Date;
 };
@@ -31,6 +33,8 @@ export type UserUpdateDto = {
     lastName?: string;
     profilPic?: string;
     username?: string;
+    userHeigth?: number;
+    userWeight?: number;
 };
 
 //create enum of role
@@ -38,3 +42,22 @@ export enum Role {
     ADMIN = 'ADMIN',
     USER = 'USER'
 }
+
+export type UserStatistiquesRo = {
+    user: UserRo;
+    daily: {
+        totalWorkout: number;
+        totalExercices: number;
+        totalCalories: number;
+    },
+    weekly: {
+        totalWorkout: number;
+        totalExercices: number;
+        totalCalories: number;
+    },
+    monthly: {
+        totalWorkout: number;
+        totalExercices: number;
+        totalCalories: number;
+    },
+};

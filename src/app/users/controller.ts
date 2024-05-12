@@ -1,6 +1,6 @@
 import { StatusCodes } from "http-status-codes";
 import { stripAnsi } from "../../utils/error";
-import { ExerciceRo, ResponseRo, UserLoginDto } from "../../types";
+import { ExerciceRo, ResponseRo, UserLoginDto, UserStatistiquesRo } from "../../types";
 import * as service from './services';
 import { UserCreateDto, UserRo, UserUpdateDto } from '../../types';
 import { NextFunction, Request, Response } from 'express';
@@ -149,3 +149,54 @@ export const getCurrentUser = async (req: Request, res: Response, next: NextFunc
     }
   };
 };
+
+export const getCurrentUserStats = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+  try {
+    const user_id = res.locals.user.id;
+    const data: Array<UserRo> = await service.getUserBydId(user_id);
+
+    const stats: UserStatistiquesRo = {
+        user: data[0],
+        daily: {
+            totalWorkout: 0,
+            totalExercices: 0,
+            totalCalories: 0,
+        },
+        weekly: {
+            totalWorkout: 0,
+            totalExercices: 0,
+            totalCalories: 0,
+        },
+        monthly: {
+            totalWorkout: 0,
+            totalExercices: 0,
+            totalCalories: 0,
+        },
+    };
+    const response: ResponseRo<UserStatistiquesRo> = {
+        status_code: StatusCodes.OK,
+        message: 'Success',
+        data: stats,
+        errors: [],
+    };
+    res.status(response.status_code).json(response);
+  } catch (err: any) {
+    if (err.name === 'DbError') {
+        const response: ResponseRo<[]> = {
+            status_code: StatusCodes.BAD_REQUEST,
+            message: stripAnsi(err.message),
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    } else {
+        const response: ResponseRo<[]> = {
+            status_code: StatusCodes.INTERNAL_SERVER_ERROR,
+            message: 'Internal Server Error',
+            data: [],
+            errors: [],
+        };
+        res.status(response.status_code).json(response);
+    }
+  };
+}

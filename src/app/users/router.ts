@@ -1,5 +1,5 @@
 import express, { Router } from 'express';
-import { register, login, getCurrentUser} from './controller';
+import { register, login, getCurrentUser, getCurrentUserStats} from './controller';
 import { auth } from '../../middleware';
 
 /**
@@ -13,6 +13,7 @@ const userRouter: Router = express.Router();
  * @method GET
  */
 userRouter.get('/me', auth, getCurrentUser);
+userRouter.get('/statistics', auth, getCurrentUserStats);
 
 /**
  * @method POST

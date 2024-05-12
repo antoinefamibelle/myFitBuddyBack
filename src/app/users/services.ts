@@ -53,7 +53,7 @@ export const login = async (dto: UserLoginDto): Promise<Array<UserAuthRo>> => {
     }
 
     const payload = { user: { id: user.id } };
-    const token = await tokenSigning(payload, jwtSecret);
+    const token = tokenSigning(payload, jwtSecret);
     const response: Array<UserAuthRo> = [ctxUserAuthResponse(user, String(token))];
     return response;
   } catch (err: any) {

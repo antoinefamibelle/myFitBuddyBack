@@ -18,9 +18,9 @@ model Exercice {
   createdAt    DateTime @default(now())
   updatedAt    DateTime
   userId       String?
+  workoutId    String?
   User         User?    @relation(fields: [userId], references: [id])
   Workout      Workout? @relation(fields: [workoutId], references: [id])
-  workoutId    String?
 }
 
 model User {
@@ -29,12 +29,15 @@ model User {
   password      String
   firstName     String
   lastName      String
-  profilPicture String?
-  username      String?    @unique
   role          String
+  height   Int?
+  weight   Int?
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
+  profilPicture String?
+  username      String?    @unique
   favorites     Exercice[]
+  favoritesWithImage ExerciceWithImage[]
   workouts      Workout[]
 }
 
@@ -42,12 +45,28 @@ model Workout {
   id          String     @id @default(uuid())
   name        String
   description String?
-  createdById String? // userId
-  duration    Int? // in minutes
-  difficulty  String?
-  userId      String?
-  user        User?      @relation(fields: [userId], references: [id])
-  exercices   Exercice[]
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
+  createdById String?
+  duration    Int?
+  difficulty  String?
+  userId      String?
+  exercices   Exercice[]
+  user        User?      @relation(fields: [userId], references: [id])
+  ExerciceWithImage ExerciceWithImage[]
+}
+
+model ExerciceWithImage {
+  id           String   @id @default(uuid())
+  bodyPart     String?
+  equipment    String?
+  image        String?
+  name         String   @unique
+  target       String?
+  secondaryMuscle String[]
+  instructions String[]
+  userId       String?
+  workoutId    String?
+  User         User?    @relation(fields: [userId], references: [id])
+  Workout      Workout? @relation(fields: [workoutId], references: [id])
 }
