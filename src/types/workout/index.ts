@@ -7,13 +7,13 @@ export type WorkoutRo = {
     description?: string;
     duration?: number;
     difficulty?: string;
-    exercices: Array<ExerciceRo>;
+    ExerciceWithImage: Array<ExerciceRo>;
     createdAt: Date;
     updatedAt: Date;
 };
 
 export type WorkoutPopulated = Workout & {
-    exercices: Array<ExerciceRo>;
+    ExerciceWithImage: Array<ExerciceRo>;
 };
 
 export type createWorkoutDto = {
@@ -21,5 +21,5 @@ export type createWorkoutDto = {
     description?: string;
     duration?: number;
     difficulty?: string;
-    exercices: Array<string>;
+    ExerciceWithImage: Array<string>;
 };

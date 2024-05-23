@@ -17,16 +17,17 @@ import { NextFunction, Request, Response } from 'express';
 export const getAll = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
   const page: number = Number(req?.query?.page) || 0;
   const limit: number = Number(req?.query?.limit) || 10;
-  const mucle: string | undefined = req?.query?.mucle as string | undefined;
+  const muscle: string | undefined = req?.query?.muscle as string | undefined;
   const type: string | undefined = req?.query?.type as string | undefined;
   const level: string | undefined = req?.query?.level as string | undefined;
   const name: string | undefined = req?.query?.name as string | undefined;
 
+  console.log('page', page)
   try {
     const data: Array<ExerciceRo> = await service.getAll({
         page,
         limit,
-        mucle,
+        muscle,
         type,
         level,
         name,

@@ -1,16 +1,16 @@
 import { ExerciceRo } from '../../types';
-import { Exercice } from '@prisma/client'
+import { ExerciceWithImage } from '@prisma/client'
 
-export const responseBuilder = (val: Exercice): ExerciceRo => {
+export const responseBuilder = (val: ExerciceWithImage): ExerciceRo => {
     return {
         id: val.id,
-        type: val.type as string,
+        bodyPart: val.bodyPart || '',
         name: val.name,
-        equipment: val.equipment as string,
-        instructions: val.instructions as string,
-        difficulty: val.difficulty as string,
-        muscleGroup: val.muscleGroup as string,
-        createdAt: val.createdAt,
-        updatedAt: val.updatedAt
+        image: val.image || '',
+        target: val.target || '',
+        secondaryMuscle: val.secondaryMuscle,
+        instructions: val.instructions,
+        userId: val.userId || '',
+        workoutId: val.workoutId || '',
     };
 };

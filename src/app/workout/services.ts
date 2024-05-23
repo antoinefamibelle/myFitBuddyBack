@@ -1,11 +1,9 @@
 import { logger } from '../../utils/logger';
 import { DbError } from '../../utils/error';
 import { prismaClient } from '../../utils';
-import { Exercice, Workout } from '@prisma/client';
-import { StatusCodes } from "http-status-codes";
+import { Workout } from '@prisma/client';
 import { WorkoutPopulated, WorkoutRo, createWorkoutDto } from '../../types';
 import { responseBuilder } from './helper';
-import { equal } from 'assert';
 
 /**
  * Get All Exercices
@@ -31,7 +29,7 @@ export const getAll = async ({
           name: name ? { contains: name } : undefined,
         },
         include: {
-          exercices: true,
+          ExerciceWithImage: true,
         },
         skip: page * limit,
         take: limit,
@@ -69,7 +67,7 @@ export const create = async ({
             connect: { id: user_id }
           },
         exercices: {
-          connect: data.exercices.map((id) => ({ id }))
+          connect: data.ExerciceWithImage.map((id) => ({ id }))
         },
       },
     });
@@ -78,7 +76,7 @@ export const create = async ({
         id: workout.id
       },
       include: {
-        exercices: true
+        ExerciceWithImage: true
       }
     }) as WorkoutPopulated;
     return responseBuilder(createdWorkout);
@@ -102,7 +100,7 @@ export const getById = async (id: string): Promise<WorkoutRo> => {
         id: id
       },
       include: {
-        exercices: true
+        ExerciceWithImage: true
       }
     }) as WorkoutPopulated;
     return responseBuilder(data);
@@ -130,7 +128,7 @@ export const update = async (id: string, data: createWorkoutDto): Promise<Workou
         duration: data.duration,
         difficulty: data.difficulty,
         exercices: {
-          connect: data.exercices.map((id) => ({ id }))
+          connect: data.ExerciceWithImage.map((id) => ({ id }))
         },
       },
     });
@@ -139,7 +137,7 @@ export const update = async (id: string, data: createWorkoutDto): Promise<Workou
         id: workout.id
       },
       include: {
-        exercices: true
+        ExerciceWithImage: true
       }
     }) as WorkoutPopulated;
     return responseBuilder(updatedWorkout);
@@ -181,7 +179,7 @@ export const getMyWorkouts = async (user_id: string): Promise<Array<WorkoutRo> |
         userId: user_id
       },
       include: {
-        exercices: true
+        ExerciceWithImage: true
       }
     }) as Array<WorkoutPopulated>;
     const response: Array<WorkoutRo> = data.map((val) => responseBuilder(val));

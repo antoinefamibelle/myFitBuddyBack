@@ -1,14 +1,13 @@
-import { Exercice } from '@prisma/client';
+import { ExerciceWithImage } from '@prisma/client';
 
 export type ExerciceRo = {
     id: string;
-    type: string;
-    name: string;
-    equipment: string;
-    instructions: string;
-    difficulty: string;
-    muscleGroup: string;
-    createdAt: Date;
-    updatedAt: Date;
+    bodyPart?: string;
+    name?: string;
+    image?: string;
+    target?: string;
+    secondaryMuscle?: string[];
+    instructions?: string[];
+    userId?: string;
+    workoutId?: string;
 }
-  

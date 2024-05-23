@@ -8,7 +8,7 @@ export const responseBuilder = (val: WorkoutPopulated): WorkoutRo => {
         description: val.description ?? undefined,
         duration: val.duration ?? undefined,
         difficulty: val.difficulty ?? undefined,
-        exercices: val.exercices ?? [],
+        ExerciceWithImage: val.ExerciceWithImage,
         createdAt: val.createdAt,
         updatedAt: val.updatedAt
     };
