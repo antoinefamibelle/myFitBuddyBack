@@ -22,7 +22,6 @@ export const getAll = async (req: Request, res: Response, next: NextFunction): P
   const level: string | undefined = req?.query?.level as string | undefined;
   const name: string | undefined = req?.query?.name as string | undefined;
 
-  console.log('page', page)
   try {
     const data: Array<ExerciceRo> = await service.getAll({
         page,

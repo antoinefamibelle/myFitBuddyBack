@@ -31,7 +31,7 @@ export const getAll = async ({
         where: {
             bodyPart: muscle ? {
               contains: muscle,
-            } : null,
+            } : undefined,
             secondaryMuscle: muscle ? {
               has: muscle,
             } : undefined,
